@@ -2,3 +2,4 @@ transformers
 jsonify
 flask
 gunicorn
+torch
