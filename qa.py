@@ -34,7 +34,7 @@ def get_answer(question, context):
     return result
 
 @app.route('/qa', methods=['POST'])
-@cross_origin()
+# @cross_origin()
 def get_answer_too():
     start = datetime.now()
     question = request.json['question']
