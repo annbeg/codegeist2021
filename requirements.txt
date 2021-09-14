@@ -1,6 +1,7 @@
+-f https://download.pytorch.org/whl/torch_stable.html
 transformers
 jsonify
 flask
 gunicorn
-torch==1.8.2+cpu
+torch==1.8.1+cpu
 torchvision==0.9.1+cpu
