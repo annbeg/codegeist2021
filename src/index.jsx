@@ -1,19 +1,19 @@
-import ForgeUI, { 
-  render, 
-  Fragment, 
-  Form, 
-  Macro, 
+import ForgeUI, {
+  render,
+  Fragment,
+  Form,
+  Macro,
   ModalDialog,
   MacroConfig,
   Strong,
   Select,
   Option,
   Link,
-  Text, 
-  TextField, 
-  Button, 
-  CheckboxGroup, 
-  Checkbox, 
+  Text,
+  TextField,
+  Button,
+  CheckboxGroup,
+  Checkbox,
   useState,
   useConfig } from "@forge/ui";
 import api, { route } from "@forge/api";
@@ -40,7 +40,7 @@ const getContexts = () => {
 
   var contexts = Array.from(
     content_resp[0]['results'], x => [
-      String(space_link+x['_links']['webui']), 
+      String(space_link+x['_links']['webui']),
       x['body']['storage']['value']
       .replace(/^<ac:adf-extension>.+<\/ac:adf-extension>$/,"")
       .replace("&nbsp;", " ")
@@ -68,13 +68,13 @@ const fetchProjects = async () => {
 
 const getProjects = () => {
   const proj_resp = useState(async () => await fetchProjects());
-  const projects = Array.from( 
+  const projects = Array.from(
     proj_resp[0], x => [x['key'], x['name']]
     )
   return projects
 }
 
-const qa_api_adress = 'https://408e-94-25-170-18.ngrok.io/qa'
+const qa_api_adress = 'https://sheltered-waters-25847.herokuapp.com/qa'
 
 const App = () => {
   const config = useConfig() || defaultConfig;
@@ -84,7 +84,7 @@ const App = () => {
   const [answer, setAnswer] = useState([]);
   const [question, setQuestion] = useState('');
   const [check, setCheck] = useState(false)
-  
+
   const onSubmit = async (formData) => {
     let ans = await axios.post(qa_api_adress, {
       'question': formData['question'],
@@ -129,9 +129,9 @@ const App = () => {
             "confluence"
           ]
       }
-      
+
     }`
-    
+
     var response = await api.asUser().requestJira(route`/rest/api/2/issue/`, {
       method: 'POST',
       headers: {
@@ -149,7 +149,7 @@ const App = () => {
   return (
     <Fragment >
       <Form onSubmit={onSubmit} submitButtonText="Ask">
-      <Text><Strong>Enter your question:</Strong></Text>
+      <Text><Strong>Enter you question:</Strong></Text>
         <TextField name="question"/>
       </Form>
       { (check  &&  answer.length == 1) &&
@@ -177,9 +177,9 @@ const App = () => {
          {answer.map((ans) =>
             <Text><Link href={ans[0]} > - {ans[1]}</Link></Text>
           )}
-        
-          <Button 
-            text='Report a discrepancy' 
+
+          <Button
+            text='Report a discrepancy'
             appearance='warning'
             onClick={() => setOpen(true)}
             disabled = {config['products'].length == 1 ? false : true}
@@ -191,8 +191,8 @@ const App = () => {
               {answer.map((ans) =>
                 <Text> - {ans[1]}</Text>
               )}
-              <Button 
-                text='Report' 
+              <Button
+                text='Report'
                 appearance='warning'
                 onClick={() => onReport()}
               />
@@ -221,9 +221,9 @@ const Config = () => {
         <Checkbox value="allow" label="Allow creating issues" />
       </CheckboxGroup>
       <Select label="Choose product" name="product">
-        {projects.map((proj) => 
-        <Option 
-          label={proj[1]} 
+        {projects.map((proj) =>
+        <Option
+          label={proj[1]}
           value={proj[0]} />)}
       </Select>
     </MacroConfig>
