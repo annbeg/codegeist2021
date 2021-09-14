@@ -53,7 +53,8 @@ def get_answer_too():
 
     finish = datetime.now()
     print(finish - start)
-    # print(all_answers)
+    # print(all_answers
+    # just for commit
     return json.dumps(
         {
             'question' : question,
