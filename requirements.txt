@@ -1,0 +1,4 @@
+transformers
+jsonify
+flask
+gunicorn
