@@ -1,8 +1,7 @@
-# Forge Hello World
+# Forge QA App
 
-This project contains a Forge app written in Javascript that displays `Hello World!` in a Confluence macro. 
+This project contains a Forge QA app written in Javascript that finds answers to user questions about Confluence space content.
 
-See [developer.atlassian.com/platform/forge/](https://developer.atlassian.com/platform/forge) for documentation and tutorials explaining Forge.
 
 ## Requirements
 
@@ -10,7 +9,6 @@ See [Set up Forge](https://developer.atlassian.com/platform/forge/set-up-forge/)
 
 ## Quick start
 
-- Modify your app by editing the `src/index.jsx` file.
 
 - Build and deploy your app by running:
 ```
